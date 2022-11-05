@@ -40,10 +40,23 @@ public class CampusMap {
         return mapString;
     }
 
+
+
     public static void main(String[] args) {
         CampusMap myMap = new CampusMap();
-        myMap.addBuilding(new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4));
-        myMap.addBuilding(new Building("Bass Hall", "4 Tyler Court Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Ford Hall", "100 Green Street, Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Bass Hall", "4 Tyler Court, Northampton, MA 01063", 4));
+
+        myMap.addBuilding(new Building("Cutter House", "10 Prospect Street, Northampton, MA 01063", 3 ));
+        myMap.addBuilding(new Building("Gardiner House", "1 Paradise Road, Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Ziskind House", "1 Prospect Street, Northampton, MA 01063", 3));
+        myMap.addBuilding(new Building("Neilson Library", "Neilson Drive, Northampton, MA 01063", 5));
+        myMap.addBuilding(new Building("Smith College Museum of Art", "39 Elm Street, Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Campus Center", "100 Elm Street, Northampton, MA 01063", 2));
+        myMap.addBuilding(new Building("Cushing House", "32 Paradise Road, Northampton, MA 01060", 4));
+        myMap.addBuilding(new Building("Wilder House", "1 Mandelle Road, Northampton, MA 01063", 4 ));
+        myMap.addBuilding(new Building("Seeyle Hall", "2 Seelye Drive, Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Hillyer Art Library", "20 Elm Street, Northampton, MA 01063"));
         System.out.println(myMap);
     }
     
