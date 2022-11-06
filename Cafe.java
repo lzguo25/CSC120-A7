@@ -12,10 +12,13 @@ public class Cafe extends Building {
     private int nCreams; // The number of "splashes" of cream reamining in inventory
     private int nCups; //The number of cups remaining in inventory
 
+    /*Default Constructor */
+    public Cafe(){
+        this("Cafe name", "Cafe address", 10,10,10,10,10);
+     }
 
-    /*
-     * Constructor for the Cafe
-     */
+
+    /*Complete Constructor for the Cafe */
     public Cafe(String name, String address, int nFloors, int coffee, int sugar, int cream, int cups) {
         super(name, address, nFloors);
         this.nCoffeeOunces = coffee;
@@ -52,7 +55,6 @@ public class Cafe extends Building {
     }
 
 
-
     /**
      * Method that allows us to restock cafe inventory when there is insufficient inventory
      * @param nCoffeeOunces coffee size in ounces
@@ -67,10 +69,11 @@ public class Cafe extends Building {
         this.nCups = nCups;
     }
 
-    /*Overloads the restock method. It will only refill cups. */
-    private void restock(int nCup){
-        this.nCups = nCup;
+    /*Overloads the restock method. Only the cups will be restocked */
+    private void restock(int nCups){
+        this.nCups = nCups;
     }
+
     
 
      /*Overrides showOptions method from the Building class. Prints out what options are available for the House. */

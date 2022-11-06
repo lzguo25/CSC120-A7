@@ -14,8 +14,13 @@ public class House extends Building { //lets Java know that House is the subclas
   private boolean hasElevator;
   
 
-  /*Constructor for House*/
-  public House(String name, String address, int nFloors, boolean hasDR) {
+  /*default Constructor for House */
+  public House(){
+    this("House name", "House Address", 1, false, false);
+  }
+
+  /*Complete Constructor for House*/
+  public House(String name, String address, int nFloors, boolean hasDR, boolean hasElevator) {
     super(name,address,nFloors); //calls the parent class constructor
     this.residents = new ArrayList<String>(); //creates an empty ArrayList
     this.hasDiningRoom = hasDR;
@@ -112,7 +117,7 @@ public class House extends Building { //lets Java know that House is the subclas
         
       }
 
-    /*Overrides gotToFloor method from the Building class. Prints out which floor you're going to. */
+    /*Overrides goToFloor method from the Building class. Prints out which floor you're going to. */
       @Override
       public void goToFloor(int floorNum){
         super.goToFloor(floorNum);
@@ -129,7 +134,7 @@ public class House extends Building { //lets Java know that House is the subclas
         
 
   public static void main(String[] args) {
-    House newHouse = new House("Cutter", "1 Prospect St", 3, true);
+    House newHouse = new House("Cutter", "1 Prospect St", 3, true, true);
       
       System.out.println(newHouse);
       newHouse.moveIn("Lily");

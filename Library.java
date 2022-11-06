@@ -1,5 +1,4 @@
 import java.util.Hashtable; //imports Hastable so that we can store keys and values for the library
-import java.util.Collection; // imports 
 
 /* This is a stub for the Library class */
 
@@ -12,11 +11,18 @@ public class Library extends Building {
   private Hashtable<String, Boolean> collection; //Hastable to store library books
   private boolean hasElevator;
 
+  /*new default constructor */
+  public Library(){
+    this("Library name", "Library address", 1, false);
+  }
 
-    public Library(String name, String address, int nFloors) {
+  /*Complete Constructor */
+    public Library(String name, String address, int nFloors, boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String,Boolean>();
+      this.hasElevator = hasElevator;
       System.out.println("You have built a library: 📖");
+
     }
 
     /**
@@ -42,6 +48,11 @@ public class Library extends Building {
       return title; //returns title that was removed
     } 
 
+    /*Overloads the removeTitle method. Clears out the entire collection in the case that the library is shut down, or the collection must be relocated. */
+    public void removeTitle(){
+      collection.clear();
+    }
+
     /**
      * Updates the status of a book when it has been checked out of the library by changing the boolean values from true to false
      * @param title title of the book that is being checked out
@@ -63,11 +74,11 @@ public class Library extends Building {
       
     }
 
-    /*Overloads returnBook method. All books will be returned to the library. */
-      public void returnBook(){
-      collection.replaceAll((key, oldValue)
-      -> true);
+    /*Overloads the returnBook method. All books that were once checked out will now be returned to the library */
+    public void returnBook(){
+      collection.replaceAll((key, oldValue) -> true);
     }
+
 
      /*Overrides showOptions method from the Building class. Prints out what options are available for the Library. */
      @Override
@@ -130,14 +141,16 @@ public class Library extends Building {
       System.out.println(collection);
     }
 
+  
+
     public static void main(String[] args) {
-      Library hillyerLibrary = new Library("Hillyer", "20 Elm St, Northampton, MA 01063",3 );
+      Library hillyerLibrary = new Library("Hillyer", "20 Elm St, Northampton, MA 01063",3, true );
 
       System.out.println(hillyerLibrary);
       hillyerLibrary.addTitle("Son of the Revolution");
       hillyerLibrary.addTitle("The Burning God");
       hillyerLibrary.checkOut("Son of the Revolution");
-      hillyerLibrary.containsTitle("Sone of the Revolution");
+      hillyerLibrary.containsTitle("Son of the Revolution");
       hillyerLibrary.isAvailable("Son of the Revolution");
       hillyerLibrary.printCollection();
     }
