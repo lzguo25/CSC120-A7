@@ -19,11 +19,22 @@ public class House extends Building { //lets Java know that House is the subclas
     this("House name", "House Address", 1, false, false);
   }
 
+  /*overloaded constructor, only takes the name */
+  public House(String name){
+    super(name);
+  }
+
+  /*overloaded constructor, only takes the name and address */
+  public House(String name, String address){
+    super(name, address);
+  }
+
   /*Complete Constructor for House*/
-  public House(String name, String address, int nFloors, boolean hasDR, boolean hasElevator) {
+  public House(String name, String address, int nFloors, boolean hasDR, boolean hasE) {
     super(name,address,nFloors); //calls the parent class constructor
     this.residents = new ArrayList<String>(); //creates an empty ArrayList
     this.hasDiningRoom = hasDR;
+    this.hasElevator = hasE;
 
     System.out.println("You have built a house: 🏠");
 
@@ -120,11 +131,11 @@ public class House extends Building { //lets Java know that House is the subclas
     /*Overrides goToFloor method from the Building class. Prints out which floor you're going to. */
       @Override
       public void goToFloor(int floorNum){
-        super.goToFloor(floorNum);
         if (hasElevator == true){
           System.out.println("...Using elevator...");
           super.goToFloor(floorNum);
         }
+        
         else{
           System.out.println("This house doesn't have an elevator. Please take the stairs.");
         }
@@ -134,22 +145,58 @@ public class House extends Building { //lets Java know that House is the subclas
         
 
   public static void main(String[] args) {
-    House newHouse = new House("Cutter", "1 Prospect St", 3, true, true);
+    House cutterHouse = new House("Cutter", "1 Prospect St", 3, true, true);
+    House gardinerHouse = new House("Gardiner", "1 Paradise Rd", 4, false, false);
       
-      System.out.println(newHouse);
-      newHouse.moveIn("Lily");
-      newHouse.moveIn("Ally");
-      newHouse.hasDiningRoom();
-      newHouse.nResidents();
-      newHouse.isResident("Lily");
-      newHouse.isResident("Ying");
-      newHouse.moveOut("Ally");
-      newHouse.isResident("Ally");
-      newHouse.nResidents();
+      System.out.println(cutterHouse);
+      cutterHouse.moveIn("Lily");
+      cutterHouse.moveIn("Ally");
+      cutterHouse.hasDiningRoom();
+      cutterHouse.nResidents();
+      cutterHouse.isResident("Lily");
+      cutterHouse.isResident("Ying");
+      cutterHouse.moveOut("Ally");
+      cutterHouse.isResident("Ally");
+      cutterHouse.nResidents();
+      cutterHouse.showOptions();
+
+
+      System.out.println("-----------------------------------");
+      System.out.println("Demonstrating enter/exit/navigation");
+      System.out.println("-----------------------------------");
+      cutterHouse.enter();
+      cutterHouse.goUp();
+      cutterHouse.goDown();
+      cutterHouse.goToFloor(3);
+      cutterHouse.exit();
+
+      System.out.println(gardinerHouse);
+      gardinerHouse.moveIn("Lily");
+      gardinerHouse.moveIn("Leila");
+      gardinerHouse.hasDiningRoom();
+      gardinerHouse.nResidents();
+      gardinerHouse.isResident("Lily");
+      gardinerHouse.moveOut("Lily");
+      gardinerHouse.isResident("Leila");
+      gardinerHouse.isResident("Lily");
+      gardinerHouse.nResidents();
+      gardinerHouse.showOptions();
+
+      System.out.println("-----------------------------------");
+      System.out.println("Demonstrating enter/exit/navigation");
+      System.out.println("-----------------------------------");
+      gardinerHouse.enter();
+      gardinerHouse.goUp();
+      gardinerHouse.goDown();
+      gardinerHouse.goToFloor(4);
+      gardinerHouse.exit();
+
+      
+    }
 
 
   }
-}
+
 
 
 

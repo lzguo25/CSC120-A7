@@ -11,10 +11,23 @@ public class Library extends Building {
   private Hashtable<String, Boolean> collection; //Hastable to store library books
   private boolean hasElevator;
 
+
   /*new default constructor */
   public Library(){
     this("Library name", "Library address", 1, false);
   }
+
+  /*overloaded constructor, only takes in the name*/
+  public Library(String name){
+    super(name);
+  }
+
+
+  /*overloaded constructor, only takes in the name and address */
+  public Library(String name, String address){
+    super(name, address);
+  }
+    
 
   /*Complete Constructor */
     public Library(String name, String address, int nFloors, boolean hasElevator) {
@@ -90,7 +103,6 @@ public class Library extends Building {
       /*Overrides gotToFloor method from the Building class. Prints out which floor you're going to. */
       @Override
       public void goToFloor(int floorNum){
-      super.goToFloor(floorNum);
       if (hasElevator == true){
         System.out.println("...Using elevator...");
         super.goToFloor(floorNum);
@@ -153,6 +165,19 @@ public class Library extends Building {
       hillyerLibrary.containsTitle("Son of the Revolution");
       hillyerLibrary.isAvailable("Son of the Revolution");
       hillyerLibrary.printCollection();
+
+
+      hillyerLibrary.showOptions();
+
+
+      System.out.println("-----------------------------------");
+      System.out.println("Demonstrating enter/exit/navigation");
+      System.out.println("-----------------------------------");
+      hillyerLibrary.enter();
+      hillyerLibrary.goUp();
+      hillyerLibrary.goDown();
+      hillyerLibrary.goToFloor(3);
+      hillyerLibrary.exit();
     }
   
   }

@@ -11,20 +11,33 @@ public class Cafe extends Building {
     private int nSugarPackets; //The number of sugar packets remaining in inventory
     private int nCreams; // The number of "splashes" of cream reamining in inventory
     private int nCups; //The number of cups remaining in inventory
+    private boolean hasElevator;
 
     /*Default Constructor */
     public Cafe(){
-        this("Cafe name", "Cafe address", 10,10,10,10,10);
+        this("Cafe name", "Cafe address", 10,10,10,10,10, false);
      }
+
+    /*overloaded constructor, only takes the name */
+    public Cafe(String name){
+        super(name);
+    }
+
+    /*overloaded constructor, only takes the name and address */
+    public Cafe(String name, String address){
+        super(name, address);
+    }
+
 
 
     /*Complete Constructor for the Cafe */
-    public Cafe(String name, String address, int nFloors, int coffee, int sugar, int cream, int cups) {
+    public Cafe(String name, String address, int nFloors, int coffee, int sugar, int cream, int cups, boolean hasE) {
         super(name, address, nFloors);
         this.nCoffeeOunces = coffee;
         this.nSugarPackets= sugar;
         this.nCreams= cream;
         this.nCups= cups;
+        this.hasElevator = hasE;
 
         System.out.println("You have built a cafe: ☕");
     }
@@ -69,9 +82,10 @@ public class Cafe extends Building {
         this.nCups = nCups;
     }
 
-    /*Overloads the restock method. Only the cups will be restocked */
-    private void restock(int nCups){
-        this.nCups = nCups;
+
+    /*Overloads the restock method. Only the coffee will be restocked */
+    private void restock(int nCoffeeOunces){
+        this.nCoffeeOunces = nCoffeeOunces;
     }
 
     
@@ -84,14 +98,37 @@ public class Cafe extends Building {
        
      }
 
+    /*Overrides goToFloor method from the Building class. Prints out which floor you're going to. */
+    @Override
+    public void goToFloor(int floorNum){
+        if (hasElevator == true){
+        System.out.println("The other floors of this cafe are employee accessible only. Thank you for understanding.");
+        }
+          
+        else{
+        System.out.println("Welcome!");
+        }
+    }      
+        
 
 
     public static void main(String[] args) {
-        Cafe compassCafe = new Cafe("Compass Cafe", "Neilson Library - Smith College",4, 2,5,8,3 );
+        Cafe compassCafe = new Cafe("Compass Cafe", "Neilson Library - Smith College",4, 100,100,100,100, false);
+        Cafe campusCafe = new Cafe("Campus Cafe", "Campus Center", 2, 100,100,100,100,true);
         
         compassCafe.sellCoffee(2,2,2,2);
         compassCafe.sellCoffee(1,1,3,3);
 
+        compassCafe.showOptions();
+        compassCafe.goToFloor(3);
+
+
+        campusCafe.sellCoffee(10,10,10,10);
+        campusCafe.restock(10, 10, 10, 10);
+
+        campusCafe.showOptions();
+        campusCafe.goToFloor(2);
+        
     }
 
     
